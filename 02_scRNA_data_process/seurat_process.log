@@ -1,0 +1,484 @@
+nohup: ignoring input
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.6
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Attaching SeuratObject
+Loading required package: Rcpp
+Loading required package: ggraph
+Performing log-normalization
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Calculating gene variances
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Calculating feature variances of standardized and clipped values
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Centering and scaling data matrix
+  |                                                                              |                                                                      |   0%  |                                                                              |===================================                                   |  50%  |                                                                              |======================================================================| 100%
+PC_ 1 
+Positive:  LDB2, TIMP3, ADGRF5, PTPRG, EPAS1, HSPG2, COL4A1, SPARC, TCF4, FLT1 
+	   FBXL7, MAGI1, COL4A2, EMCN, ADGRL4, GRB10, PLVAP, PTPRB, CALCRL, ENG 
+	   SPARCL1, PLPP1, PLPP3, NHERF2, VWF, KDR, PODXL, RAPGEF4, MEIS2, ENSG00000289873 
+Negative:  FTL, SERPINA1, HMOX1, PLEK, TYROBP, CCL4, ZNF331, CTSS, PDZK1IP1, TOX 
+	   HILPDA, SPP1, FCER1G, AIF1, FCGR3A, CXCL14, CPVL, LINC01934, NLGN1, CFD 
+	   GAL3ST1, MS4A6A, CTSD, CRYAB, WFDC2, PTH2R, CA12, GZMK, SLC6A13, ENSG00000258667 
+PC_ 2 
+Positive:  ANGPTL4, NNMT, CRYAB, NLGN1, CA12, CLU, HILPDA, PDZK1IP1, SPP1, PLOD2 
+	   PTH2R, GPX3, ENPP3, WFDC2, GAL3ST1, PKHD1, CXCL14, LRP2, TMEM91, ITGB8 
+	   IGFBP3, LINC03142, DCDC2, KRT19, ELF3, WWC1, CP, KCNIP4, PCSK6, FHL2 
+Negative:  HLA-DPA1, HLA-DPB1, TYROBP, CTSS, AIF1, FCER1G, HLA-DRA, MS4A6A, MS4A7, C1QA 
+	   C1QB, C1QC, LYZ, FGL2, HLA-DRB1, FCGR3A, CD14, CYBB, LST1, CD83 
+	   IGSF6, HLA-DQA1, ATP1B3, ZNF331, PLEK, MS4A4A, CD86, GPR183, MSR1, APOE 
+PC_ 3 
+Positive:  RGS5, SLIT3, PDGFRB, NOTCH3, TPM2, PRKG1, COL1A2, NGF, TAGLN, PLAC9 
+	   MYL9, TBX2, HEYL, CRISPLD2, CCDC102B, MFGE8, EDNRA, ACTA2, FRZB, GUCY1A2 
+	   CACNB2, TPPP3, CARMN, SOX5, SYNPO2, BGN, COL6A2, CPE, ANGPT1, COL5A3 
+Negative:  LIMCH1, GRB10, PTPRB, INSR, EGFL7, FLT1, ADGRL4, ENSG00000289873, VWA1, PLVAP 
+	   HSPG2, KDR, ITGA6, RAPGEF4, PODXL, VWF, TM4SF18, RAMP2, CYYR1, EXOC3L2 
+	   RAMP3, DYSF, SLCO2A1, TGM2, PECAM1, BTNL9, CDH5, PLPP3, EFNB2, ERG 
+PC_ 4 
+Positive:  TOX, LINC01934, GZMK, LTB, IL7R, GZMB, IFNG, LINC00987, GNLY, IKZF2 
+	   ST8SIA1, TNFRSF9, CCL4, CRTAM, TNIP3, XCL2, NELL2, H1-3, BACH2, KCNQ5 
+	   LINC02964, LINC02694, TRAF1, RGCC, XCL1, IFNG-AS1, MIR4422HG, ENSG00000228509, ENSG00000227240, SGCD 
+Negative:  PSAP, PLXDC2, CTSB, FTL, MS4A7, C1QA, CPVL, C1QC, C1QB, CD14 
+	   MSR1, LGMN, FMNL2, APOE, MS4A6A, AIF1, CFD, MAFB, CYBB, IGSF6 
+	   LYZ, SLC40A1, MS4A4A, FCER1G, IER3, FRMD4A, HLA-DRA, SELENOP, RAB31, CD163 
+PC_ 5 
+Positive:  CXCL14, NAT8, SLC6A13, SERPINA1, CUBN, CRYAB, LRP2, TSPAN1, ACSM2B, KHK 
+	   SLC5A12, ENSG00000243081, CES2, ENSG00000249776, ENSG00000226994, ENSG00000258667, SLC16A12, ENSG00000300984, AOC1, PTH2R 
+	   LINC02932, SLC17A3, NLGN1, CLDN4, MIOX, MACC1, NPR3, HILPDA, NAPSA, LINC03017 
+Negative:  LINC00626, CYP1B1, ENSG00000304216, SLPI, ENSG00000286546, PTPRR, ENSG00000306103, ENSG00000294782, ENSG00000223829, ENSG00000285751 
+	   ENSG00000302419, QSOX1, HECTD2-AS1, IGFBP1, AGR2, UGT3A2, ENSG00000292256, WNT5A, WFDC3, ENSG00000295670 
+	   DNTTIP1, LINC00511, INHA, SPINK1, PAEP, SLC7A2, C15orf48, MME, CADM1, CXCL1 
+Transposing data matrix
+Initializing state using k-means centroids initialization
+Harmony 1/10
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Harmony 2/10
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Harmony 3/10
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Harmony 4/10
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Harmony 5/10
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Harmony converged after 5 iterations
+Warning: Invalid name supplied, making object name syntactically valid. New object name is Seurat..ProjectDim.RNA.harmony; see ?make.names for more details on syntax validity
+Warning: The default method for RunUMAP has changed from calling Python UMAP via reticulate to the R-native UWOT using the cosine metric
+To use Python UMAP via reticulate, set umap.method to 'umap-learn' and metric to 'correlation'
+This message will be shown once per session
+02:11:44 UMAP embedding parameters a = 0.9922 b = 1.112
+02:11:44 Read 131491 rows and found 32 numeric columns
+02:11:44 Using Annoy for neighbor search, n_neighbors = 30
+02:11:44 Building Annoy index with metric = cosine, n_trees = 50
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+02:12:06 Writing NN index file to temp file /tmp/Rtmpq2yAzo/file4579633443169
+02:12:06 Searching Annoy index using 1 thread, search_k = 3000
+02:13:15 Annoy recall = 100%
+02:13:17 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30
+02:13:24 Initializing from normalized Laplacian + noise (using irlba)
+02:15:35 Commencing optimization for 200 epochs, with 6175792 positive edges
+Using method 'umap'
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+02:17:07 Optimization finished
+Computing nearest neighbor graph
+Computing SNN
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.9791
+Number of communities: 10
+Elapsed time: 93 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.9704
+Number of communities: 13
+Elapsed time: 94 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.9630
+Number of communities: 13
+Elapsed time: 101 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.9565
+Number of communities: 15
+Elapsed time: 98 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.9505
+Number of communities: 16
+Elapsed time: 88 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.9445
+Number of communities: 17
+Elapsed time: 98 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.9395
+Number of communities: 17
+Elapsed time: 99 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.9346
+Number of communities: 19
+Elapsed time: 97 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.9301
+Number of communities: 21
+Elapsed time: 101 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.9254
+Number of communities: 20
+Elapsed time: 92 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.9208
+Number of communities: 23
+Elapsed time: 107 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.9164
+Number of communities: 24
+Elapsed time: 94 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.9122
+Number of communities: 25
+Elapsed time: 94 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.9081
+Number of communities: 27
+Elapsed time: 98 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.9034
+Number of communities: 27
+Elapsed time: 95 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.8995
+Number of communities: 28
+Elapsed time: 100 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.8959
+Number of communities: 30
+Elapsed time: 90 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.8925
+Number of communities: 31
+Elapsed time: 88 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.8903
+Number of communities: 31
+Elapsed time: 88 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.8867
+Number of communities: 29
+Elapsed time: 90 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.8833
+Number of communities: 30
+Elapsed time: 84 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.8806
+Number of communities: 33
+Elapsed time: 87 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.8779
+Number of communities: 33
+Elapsed time: 87 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.8755
+Number of communities: 33
+Elapsed time: 94 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.8723
+Number of communities: 32
+Elapsed time: 88 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.8708
+Number of communities: 34
+Elapsed time: 95 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.8679
+Number of communities: 36
+Elapsed time: 90 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.8664
+Number of communities: 36
+Elapsed time: 84 seconds
+Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 131491
+Number of edges: 4611151
+
+Running Louvain algorithm...
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Maximum modularity in 10 random starts: 0.8636
+Number of communities: 36
+Elapsed time: 95 seconds
+Error in `ggsave()`:
+! Cannot find directory
+  '/media/desk16/iyun4605/projects/Everolimus_Resistance_ccRCC/anlysis/figure'.
+ℹ Please supply an existing directory or use `create.dir = TRUE`.
+Backtrace:
+    ▆
+ 1. └─ggplot2::ggsave(...)
+ 2.   └─ggplot2:::check_path(path, filename, create.dir)
+ 3.     └─cli::cli_abort(...)
+ 4.       └─rlang::abort(...)
+Execution halted
