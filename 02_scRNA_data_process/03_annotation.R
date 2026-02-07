@@ -1,6 +1,7 @@
 #### Load packages and functions ####
 library(Seurat)
 library(tidyverse)
+library(scTookit)
 
 #### Load data and processe ####
 seu <- qs::qread("analysis/data/02_scRNA_data_process/02_seurat_process/01_seu_clusters.qs", nthreads = 50)
