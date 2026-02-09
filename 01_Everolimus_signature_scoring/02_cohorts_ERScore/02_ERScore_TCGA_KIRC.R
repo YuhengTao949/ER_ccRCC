@@ -1,4 +1,5 @@
 #### Load packages ####
+library(tidyverse)
 library(survival)
 library(survminer)
 library(ggplot2)
@@ -6,6 +7,9 @@ library(ggpubr)
 library(forestplot)
 library(grid)
 library(timeROC)
+library(rms)
+library(bulkTookit)
+library(regplot)
 set.seed(1001)
 
 #### Load data and process ####
@@ -30,7 +34,7 @@ p_t <- stage_boxplot(TCGA_dat,
                      y_title = "Everolimus Response Score")
 p <- p_grade+p_stage+p_t
 print(p)
-ggsave(filename = "analysis/figure/01_Everolimus_signature_scoring/02_cohorts_ERScore/02_ERScore_TCGA_KIRC/cohorts_ERScore_tumor_progress.pdf", p, width = 8.68, height = 3.86)
+ggsave(filename = "analysis/figure/01_Everolimus_signature_scoring/02_cohorts_ERScore/02_ERScore_TCGA_KIRC/stag_boxplot/cohorts_ERScore_tumor_progress.pdf", p, width = 8.68, height = 3.86)
 
 #### Survival Analysis ####
 # meta_ssgsea_list <- qs::qread("data/03_Everolimus_treatment_data/0303_ERGs_ssgsea/0303_02_meta_ssgsea_list.qs")
@@ -51,27 +55,26 @@ print(p)
 ggsave(filename = "analysis/figure/01_Everolimus_signature_scoring/02_cohorts_ERScore/02_ERScore_TCGA_KIRC/survival_analysis_ERScore_TCGA_KIRC.pdf", p, height = 5.38, width = 13.40)
 
 #### Cox ####
-dat_cox <- TCGA_dat %>% dplyr::select(-c("DSS", "DSS.time", "DFI", "DFI.time", "PFI", "PFI.time")) %>% filter(!is.na(OS) & !is.na(OS.time))
+dat_cox <- TCGA_dat %>% dplyr::select(-c("DSS", "DSS.time", "DFI", "DFI.time", "PFI", "PFI.time")) 
 colnames(dat_cox) <- c("OS", "OS_time", "Gender", "Age", "Stage", "T_stage", "N_stage", "M_stage", "Tumor_grade", "ERScore")
-dat_cox[is.na(dat_cox)] <- "X"
+dat_cox <- na.omit(dat_cox)
 dat_cox$Stage <- gsub(" ", "_", dat_cox$Stage)
 dat_cox <- dat_cox %>% 
   dplyr::mutate(Gender = factor(Gender, levels = c("male", "female")) %>% as.numeric(),
                 Age = Age %>% as.numeric(),
-                Stage = factor(Stage, levels = c("Stage_I", "Stage_II", "Stage_III", "Stage_IV", "X")) %>% as.numeric(),
-                T_stage = factor(T_stage, levels = c("T1", "T2", "T3", "T4", "X")) %>% as.numeric(),
-                N_stage = factor(N_stage, levels = c("N0", "N1", "N2", "X")) %>% as.numeric(),
-                M_stage = factor(M_stage, levels = c("M0", "M1", "X")) %>% as.numeric(),
-                Tumor_grade = factor(Tumor_grade, levels = c("G1", "G2", "G3", "G4", "X")) %>% as.numeric(),
+                Stage = factor(Stage, levels = c("Stage_I", "Stage_II", "Stage_III", "Stage_IV")) %>% as.numeric(),
+                T_stage = factor(T_stage, levels = c("T1", "T2", "T3", "T4")) %>% as.numeric(),
+                N_stage = factor(N_stage, levels = c("N0", "N1")) %>% as.numeric(),
+                M_stage = factor(M_stage, levels = c( "M0", "M1")) %>% as.numeric(),
+                Tumor_grade = factor(Tumor_grade, levels = c("G1", "G2", "G3", "G4")) %>% as.numeric(),
                 ERScore = ERScore %>% as.numeric())
 
-
 ##### Uni Cox ####
-uni_cox <- Unicox(cox_data = dat_cox,
+uni_cox <- UniCox(cox_data = dat_cox,
                   surv_event_col = "OS",
                   surv_time_col = "OS_time",
                   vars = c("Gender", "Age", "Stage", "T_stage", "N_stage", "M_stage", "Tumor_grade", "ERScore"))
-pdf("analysis/figure/01_Everolimus_signature_scoring/02_cohorts_ERScore/02_ERScore_TCGA_KIRC/unicox_OS.pdf", width = 7.95, height = 4.43)
+pdf("analysis/figure/01_Everolimus_signature_scoring/02_cohorts_ERScore/02_ERScore_TCGA_KIRC/coxplot/unicox_OS.pdf", width = 7.95, height = 4.43)
 CoxForestPlot(uni_cox)
 dev.off()
 
@@ -79,13 +82,13 @@ dev.off()
 multi_cox <- MutiCox(cox_data = dat_cox,
                      surv_event_col = "OS",
                      surv_time_col = "OS_time",
-                     vars = c("Gender", "Age", "Stage", "T_stage", "N_stage", "M_stage", "Tumor_grade", "ERScore"))
-pdf("analysis/figure/01_Everolimus_signature_scoring/02_cohorts_ERScore/02_ERScore_TCGA_KIRC/multicox_OS.pdf", width = 7.95, height = 4.43)
+                     vars = c("Gender", "Age", "T_stage", "N_stage", "M_stage", "Tumor_grade", "ERScore"))
+pdf("analysis/figure/01_Everolimus_signature_scoring/02_cohorts_ERScore/02_ERScore_TCGA_KIRC/coxplot/multicox_OS.pdf", width = 7.95, height = 4.43)
 CoxForestPlot(multi_cox)
 dev.off()
 
 #### timeROC ####
-pdf("analysis/figure/01_Everolimus_signature_scoring/02_cohorts_ERScore/02_ERScore_TCGA_KIRC/timeroc_os.pdf", width = 4.43, height = 4.43)
+pdf("analysis/figure/01_Everolimus_signature_scoring/02_cohorts_ERScore/02_ERScore_TCGA_KIRC/roc/timeroc_os.pdf", width = 4.43, height = 4.43)
 PlottimeROC(
   dat_roc    = TCGA_dat,
   time_col   = "OS.time",
@@ -95,7 +98,7 @@ PlottimeROC(
 )
 dev.off()
 
-pdf("analysis/figure/01_Everolimus_signature_scoring/02_cohorts_ERScore/02_ERScore_TCGA_KIRC/timeroc_pfs.pdf", width = 4.43, height = 4.43)
+pdf("analysis/figure/01_Everolimus_signature_scoring/02_cohorts_ERScore/02_ERScore_TCGA_KIRC/roc/timeroc_pfs.pdf", width = 4.43, height = 4.43)
 PlottimeROC(
   dat_roc    = TCGA_dat,
   time_col   = "PFI.time",
@@ -105,7 +108,7 @@ PlottimeROC(
 )
 dev.off()
 
-pdf("analysis/figure/01_Everolimus_signature_scoring/02_cohorts_ERScore/02_ERScore_TCGA_KIRC/timeroc_dfi.pdf", width = 4.43, height = 4.43)
+pdf("analysis/figure/01_Everolimus_signature_scoring/02_cohorts_ERScore/02_ERScore_TCGA_KIRC/roc/timeroc_dfi.pdf", width = 4.43, height = 4.43)
 PlottimeROC(
   dat_roc    = TCGA_dat,
   time_col   = "DSS.time",
@@ -114,3 +117,21 @@ PlottimeROC(
   main_title = "TCGA KIRC DSS"
 )
 dev.off()
+
+#### Nomogram ####
+mul_cox_rms <- cph(Surv(OS_time, OS) ~ Gender+Age+Stage+T_stage+N_stage+M_stage+Tumor_grade+ERScore, data = dat_cox, x = TRUE, y = TRUE, surv = TRUE)
+regplot(mul_cox_rms,
+        points = TRUE,                      # 在列线图上显示点
+        plots = c("density", "no plot"),    # 设置要显示的图表类型，这里包括密度图和无图表
+        failtime = c(365, 730, 1095),       # 指定预测的时间点，这里预测了1年、2年和3年的死亡风险，单位是day
+        odds = T,                           # 是否显示死亡几率
+        leftlabel = T,                      # 是否显示左侧标签
+        prfail = TRUE,                      # 在 Cox 回归中需要设置为 TRUE
+        showP = T,                          # 是否展示统计学差异
+        droplines = T,                      # 示例计分是否画线
+        rank = "range",                     # 根据统计学差异的显著性进行变量的排序
+        interval = "confidence",            # 使用置信区间进行可视化
+        title = "Nomogram (Cox regression TCGA-KIRC OS)")           # 设置图表的标题
+
+#### Cancer cells related pathways ####
+

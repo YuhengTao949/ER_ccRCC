@@ -102,9 +102,9 @@ reducedTerms <- reduceSimMatrix(simMatrix,
 qs::qsave(reducedTerms, file = "analysis/data/01_Everolimus_signature_scoring/01_Everolimus_treat_enrich_4h/02_rrvgo.qs")
 
 gsea_go_res <- qs::qread("analysis/data/01_Everolimus_signature_scoring/01_Everolimus_treat_enrich_4h/02_gsea_go.qs")
-reducedTerms <- qs::qread("analysis/data/01_Everolimus_signature_scoring/01_Everolimus_treat_enrich_4h/02_rrvgo.qs")
-gsea_go_res@result <- subset(gsea_go_res@result, ID %in% reducedTerms$parent)
-prompt <- interpret_tool(gsea_go_res, database = "GO", diff_genes, contact_LLM = FALSE,
+# reducedTerms <- qs::qread("analysis/data/01_Everolimus_signature_scoring/01_Everolimus_treat_enrich_4h/02_rrvgo.qs")
+# gsea_go_res@result <- subset(gsea_go_res@result, ID %in% reducedTerms$parent)
+prompt <- interpret_tool(gsea_go_res, database = "GO", pathway_num = 50, diff_genes, contact_LLM = FALSE,
                          context = "786-0 cells were treated with either a control DMSO vehicle or 10um Everolimus, an mTOR inhibitor, for 4 hours.")
 writeLines(prompt, "analysis/data/01_Everolimus_signature_scoring/01_Everolimus_treat_enrich_4h/prompt/gsea_go.txt")
 
@@ -136,7 +136,7 @@ gsea_kegg_dat <- as.data.frame(gsea_kegg_res) %>% arrange(desc(NES))
 qs::qsave(gsea_kegg_res, file = "analysis/data/01_Everolimus_signature_scoring/01_Everolimus_treat_enrich_4h/03_gsea_kegg.qs")
 
 gsea_kegg_res <- qs::qread("analysis/data/01_Everolimus_signature_scoring/01_Everolimus_treat_enrich_4h/03_gsea_kegg.qs")
-prompt <- interpret_tool(gsea_kegg_res, database = "KEGG", diff_genes, pathway_num = NULL, contact_LLM = FALSE,
+prompt <- interpret_tool(gsea_kegg_res, database = "KEGG", diff_genes, pathway_num = 50, contact_LLM = FALSE,
                          context = "786-0 cells were treated with either a control DMSO vehicle or 10um Everolimus, an mTOR inhibitor, for 4 hours.")
 writeLines(prompt, "analysis/data/01_Everolimus_signature_scoring/01_Everolimus_treat_enrich_4h/prompt/gsea_kegg.txt")
 
