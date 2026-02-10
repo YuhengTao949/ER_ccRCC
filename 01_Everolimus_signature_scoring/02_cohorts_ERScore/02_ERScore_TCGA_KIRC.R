@@ -133,5 +133,4 @@ regplot(mul_cox_rms,
         interval = "confidence",            # 使用置信区间进行可视化
         title = "Nomogram (Cox regression TCGA-KIRC OS)")           # 设置图表的标题
 
-#### Cancer cells related pathways ####
 

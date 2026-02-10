@@ -2,6 +2,8 @@
 library(GSVA)
 library(tidyverse)
 library(bulkTookit)
+library(ComplexHeatmap)
+library(circlize)
 
 #### Load data and process ####
 hall <- readGMT("analysis/resource/msigdb/h.all.v2026.1.Hs.symbols.gmt")
@@ -60,10 +62,6 @@ qs::qsave(ERScore_gsets_score_list, file = "analysis/data/01_Everolimus_signatur
 # WNT BETA CATENIN SIGNALING 促进肿瘤细胞的去分化、迁移能力以及维持肿瘤干细胞特性（定植必须）。
 # NOTCH SIGNALING 参与细胞间通讯，调节血管生成和肿瘤干性，促进转移定植。
 # HEDGEHOG SIGNALING 与肿瘤的侵袭性和干细胞维持密切相关。
-
-#### Correlation ####
-library(ComplexHeatmap)
-library(circlize)
 
 # ============================================================
 # 1. 定义行分组及基因集条目
@@ -208,6 +206,6 @@ ht <- Heatmap(
   column_title_gp = gpar(fontsize = 13, fontface = "bold")
 )
 
-pdf("analysis/figure/01_Everolimus_signature_scoring/03_ERScore_genesets/01_cor_heatmap.pdf", width = 10, height = 10)
+pdf("analysis/figure/01_Everolimus_signature_scoring/03_ERScore_genesets/01_cor_heatmap.pdf", width = 10.57, height = 7.20)
 draw(ht, merge_legend = TRUE, padding = unit(c(10, 10, 10, 20), "mm"))
 dev.off()

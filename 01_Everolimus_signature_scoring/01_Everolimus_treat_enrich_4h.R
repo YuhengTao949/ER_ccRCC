@@ -17,6 +17,16 @@ library(EnrichExplainer)
 #### Load data and process ####
 counts <- qs::qread("RNA_seq_upstream/GSE99875/02_annotated_expression_matrices/counts.qs") 
 metadata <- qs::qread("RNA_seq_upstream/GSE99875/resource/metadata.qs")
+path_hierarchy <- jsonlite::fromJSON("analysis/resource/br08901.json", simplifyDataFrame = T, flatten = T)
+kegg_df <- path_hierarchy$children %>% 
+  rename(level1 = name) %>%
+  unnest(cols = c(children)) %>% 
+  rename(level2=name) %>%
+  unnest(cols = c("children")) %>%
+  rename(level3=name) %>%
+  mutate(id = paste0("hsa", substr(level3, 1,5)),
+         level3 = substr(level3, 7, nchar(level3))) %>%
+  select(id, level3, level2, level1)
 
 #### Identify differentially expressed genes ####
 dds <- DESeqDataSetFromMatrix(countData = counts,
@@ -132,7 +142,6 @@ gsea_kegg_res <- setReadable(gsea_kegg_res,
                              OrgDb = "org.Hs.eg.db",
                              keyType = "ENTREZID")
 gsea_kegg_res@result <- subset(gsea_kegg_res@result, NES > 0 & p.adjust < 0.05)
-gsea_kegg_dat <- as.data.frame(gsea_kegg_res) %>% arrange(desc(NES))
 qs::qsave(gsea_kegg_res, file = "analysis/data/01_Everolimus_signature_scoring/01_Everolimus_treat_enrich_4h/03_gsea_kegg.qs")
 
 gsea_kegg_res <- qs::qread("analysis/data/01_Everolimus_signature_scoring/01_Everolimus_treat_enrich_4h/03_gsea_kegg.qs")
@@ -140,6 +149,14 @@ prompt <- interpret_tool(gsea_kegg_res, database = "KEGG", diff_genes, pathway_n
                          context = "786-0 cells were treated with either a control DMSO vehicle or 10um Everolimus, an mTOR inhibitor, for 4 hours.")
 writeLines(prompt, "analysis/data/01_Everolimus_signature_scoring/01_Everolimus_treat_enrich_4h/prompt/gsea_kegg.txt")
 
+##### plot #####
+gsea_kegg_dat <- as.data.frame(gsea_kegg_res) %>% dplyr::arrange(desc(NES)) %>% dplyr::slice_head(n = 50)
+p <- KEGGStratifyPlot(enrich_data = gsea_kegg_dat,
+                      kegg_df = kegg_df,
+                      enrich_score = "NES",
+                      pval = "p.adjust")
+print(p)
+ggsave("analysis/figure/01_Everolimus_signature_scoring/01_Everolimus_treat_enrich_4h/kegg_classified.pdf", p, width = 11, height = 7)
 
 #### WP ####
 ora_wp_res <- enrichWP(gene         = entrez, 
